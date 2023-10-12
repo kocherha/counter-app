@@ -1,0 +1,52 @@
+{
+  "name": "counter-app",
+  "version": "0.1.0",
+  "private": true,
+  "main": "build/electron/main.js",
+  "dependencies": {
+    "@electron/remote": "^2.0.12",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "cross-env": "^7.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "5.0.1",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "react_start": "react-scripts start",
+    "react_build": "react-scripts build",
+    "react_eject": "react-scripts eject",
+    "electron_build": "tsc -p electron",
+    "electron_start": "electron .",
+    "start": "yarn electron_build && concurrently --kill-others \"cross-env BROWSER=none yarn react_start\" \"wait-on http://localhost:3000 && yarn electron_start\""
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/electron": "^1.6.10",
+    "@types/react": "^18.2.28",
+    "@types/react-dom": "^18.2.13",
+    "concurrently": "^8.2.1",
+    "electron": "^27.0.0",
+    "wait-on": "^7.0.1"
+  }
+}
